@@ -1,8 +1,6 @@
-name: assess-scripts-3
+name: compile pkg
 
-on:
-  workflow_dispatch:
-    branches: build_cache_ompi
+on: workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
