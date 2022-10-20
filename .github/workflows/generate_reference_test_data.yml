@@ -33,6 +33,7 @@ jobs:
         echo "Incompact3d HEAD: $(git rev-parse HEAD)" >> metadata.txt
         echo "make cmd: make" >> metadata.txt
         echo "run cmd: mpirun -np 2 xcompact3d" >> metadata.txt
+        export PATH=$(pwd)/openmpi-4.1.2/installed/bin/:$PATH
         echo "mpif90 version: $(mpif90 --version | head -1)" >> metadata.txt
         echo "mpirun version: $(mpirun --version | head -1)" >> metadata.txt
     - name: Build Incompact3d and run TGV reference test case
