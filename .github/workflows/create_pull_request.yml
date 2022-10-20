@@ -1,0 +1,18 @@
+name: "Test crecting a PR from an action"
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: "modify a file"
+      run: |
+        echo "Hello" >> test/data/Taylor-Green-Vortex/atestfile.txt
+    - name: Create new Pull Request updating the reference output
+      uses: peter-evans/create-pull-request@v4
+      with:
+        add-paths: test/data/Taylor-Green-Vortex/atestfile.txt
