@@ -1,4 +1,5 @@
 from numpy import loadtxt, testing
+import sys
 import argparse
 
 desc = "Compare last output to reference Taylor-Green Vortex output."
@@ -26,3 +27,4 @@ if all_columns_match:
     print(f"SUCCESS -- output matches reference values.")
 else:
     print(f"MISMATCH -- some columns do not match reference values, see above.")
+    sys.exit(1)
