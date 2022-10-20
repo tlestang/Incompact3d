@@ -45,4 +45,4 @@ jobs:
     - name: Build Incompact3d
       run: |
         export PATH=$(pwd)/openmpi-4.1.2/installed/bin/:$PATH
-        make -j 2
+        make
