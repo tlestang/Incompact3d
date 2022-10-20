@@ -22,6 +22,10 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
     # We don't want to build openmpi each time this workflow is
     # run. Setup caching of OpenMPI after it is built and installed.
     # See "Caching dependencies to speed up workflows" on the GH
@@ -46,3 +50,13 @@ jobs:
       run: |
         export PATH=$(pwd)/openmpi-4.1.2/installed/bin/:$PATH
         make
+    - name: Run TGV case
+      run: |
+        cp test/data/Taylor-Green-Vortex/input_DNS_Re1600.i3d input.i3d
+        ./xcompact3d
+
+    - name: Compare output time evolution to reference output
+      run: |
+        python compare_TGV_time_evolution.py \
+            --input time_evol.dat
+            --reference test/data/Taylor-Green-Vortex/reference_time_evol.dat
