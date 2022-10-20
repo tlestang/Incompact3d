@@ -1,6 +1,8 @@
-from numpy import loadtxt, testing
 import sys
 import argparse
+
+from numpy import loadtxt, testing
+
 
 desc = "Compare last output to reference Taylor-Green Vortex output."
 parser = argparse.ArgumentParser(description=desc)
@@ -24,7 +26,7 @@ for column_idx in range(values.shape[1]):
         all_columns_match = False
 
 if all_columns_match:
-    print(f"SUCCESS -- output matches reference values.")
+    print("SUCCESS -- output matches reference values.")
 else:
-    print(f"MISMATCH -- some columns do not match reference values, see above.")
+    print("MISMATCH -- some columns do not match reference values, see above.")
     sys.exit(1)
